@@ -38,20 +38,12 @@ class MilvusExperiment(
   private val log = LoggerFactory.getLogger(javaClass)
   @EventListener(ApplicationReadyEvent::class)
   fun onReady() {
-    //    setupCollection()
-    //    setupDocuments()
+    setupCollection()
+    setupDocuments()
     search()
   }
 
   private fun search() {
-    log.info("Loading collection")
-    LoadCollectionParam.newBuilder()
-        .withCollectionName(COLLECTION_NAME)
-        .build()
-        .let { milvusClient.loadCollection(it) }
-        .unwrap()
-
-    log.info("Collection loaded")
 
     log.info("Preparing search embedding")
     val searchText = "What is your favorite sport?"
@@ -162,5 +154,14 @@ class MilvusExperiment(
         .unwrap()
 
     log.info("Collection is setup")
+
+    log.info("Loading collection")
+    LoadCollectionParam.newBuilder()
+        .withCollectionName(COLLECTION_NAME)
+        .build()
+        .let { milvusClient.loadCollection(it) }
+        .unwrap()
+
+    log.info("Collection loaded")
   }
 }
