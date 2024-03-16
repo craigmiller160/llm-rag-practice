@@ -64,6 +64,7 @@ class MilvusExperiment(
             .withVectors(listOf(searchEmbedding))
             .withTopK(1)
             .withOutFields(listOf(ID_FIELD_NAME, TEXT_FIELD_NAME, METADATA_FIELD_NAME))
+            .withParams("""{"nprobe": 3}""")
             .build()
             .let { milvusClient.search(it) }
             .unwrap()
@@ -160,7 +161,8 @@ class MilvusExperiment(
         .withCollectionName(COLLECTION_NAME)
         .withFieldName(VECTOR_FIELD_NAME)
         .withMetricType(MetricType.COSINE)
-        .withIndexType(IndexType.FLAT)
+        .withIndexType(IndexType.IVF_FLAT)
+        .withExtraParam("""{"nlist": 1000}""")
         .build()
         .let { milvusClient.createIndex(it) }
         .unwrap()
