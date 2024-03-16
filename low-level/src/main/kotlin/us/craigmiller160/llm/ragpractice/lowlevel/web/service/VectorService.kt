@@ -11,13 +11,8 @@ import org.bson.Document
 import org.slf4j.LoggerFactory
 import org.springframework.data.mongodb.core.MongoTemplate
 import org.springframework.stereotype.Service
-import us.craigmiller160.ragpractice.config.MilvusProperties
-import us.craigmiller160.ragpractice.config.MongoCollectionProperties
-import us.craigmiller160.ragpractice.openai.OpenaiClient
-import us.craigmiller160.ragpractice.utils.rpc.unwrap
-import us.craigmiller160.ragpractice.web.dto.SearchRequest
-import us.craigmiller160.ragpractice.web.dto.StoreDocumentRequest
-import us.craigmiller160.ragpractice.web.dto.StoreDocumentResponse
+import us.craigmiller160.llm.ragpractice.lowlevel.config.MilvusProperties
+import us.craigmiller160.llm.ragpractice.lowlevel.config.MongoCollectionProperties
 
 @Service
 class VectorService(

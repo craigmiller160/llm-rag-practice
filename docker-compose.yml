@@ -61,6 +61,27 @@ services:
       - "etcd"
       - "minio"
 
+  mongodb:
+    container_name: mongodb
+    image: mongo:4.4.29
+    platform: linux/amd64
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=user
+      - MONGO_INITDB_ROOT_PASSWORD=password
+    volumes:
+      - ./volumes/mongodb:/data/db
+    ports:
+      - '27017:27017'
+
+  attu:
+    container_name: attu
+    image: zilliz/attu:v2.3.8
+    platform: linux/amd64
+    environment:
+      - MILVUS_URL=milvus:19530
+    ports:
+      - '8000:3000'
+
 networks:
   default:
     name: milvus

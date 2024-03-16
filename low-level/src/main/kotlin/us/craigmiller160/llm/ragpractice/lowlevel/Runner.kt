@@ -8,7 +8,7 @@ import us.craigmiller160.llm.ragpractice.lowlevel.springsupport.YamlPropertyLoad
 
 @SpringBootApplication
 @ConfigurationPropertiesScan(basePackages = ["us.craigmiller160.llm.ragpractice.lowlevel"])
-@PropertySource("file:./secrets.yml", factory = YamlPropertyLoaderFactory::class)
+@PropertySource("file:../secrets.yml", factory = YamlPropertyLoaderFactory::class)
 class Runner
 
 fun main(args: Array<String>) {
