@@ -13,6 +13,11 @@ import org.springframework.data.mongodb.core.MongoTemplate
 import org.springframework.stereotype.Service
 import us.craigmiller160.llm.ragpractice.lowlevel.config.MilvusProperties
 import us.craigmiller160.llm.ragpractice.lowlevel.config.MongoCollectionProperties
+import us.craigmiller160.llm.ragpractice.lowlevel.openai.OpenaiClient
+import us.craigmiller160.llm.ragpractice.lowlevel.utils.rpc.unwrap
+import us.craigmiller160.llm.ragpractice.lowlevel.web.dto.SearchRequest
+import us.craigmiller160.llm.ragpractice.lowlevel.web.dto.StoreDocumentRequest
+import us.craigmiller160.llm.ragpractice.lowlevel.web.dto.StoreDocumentResponse
 
 @Service
 class VectorService(

@@ -13,9 +13,9 @@ import org.slf4j.LoggerFactory
 import org.springframework.boot.context.event.ApplicationReadyEvent
 import org.springframework.context.event.EventListener
 import org.springframework.stereotype.Service
-import us.craigmiller160.ragpractice.config.MilvusProperties
-import us.craigmiller160.ragpractice.openai.OpenaiProperties
-import us.craigmiller160.ragpractice.utils.rpc.unwrap
+import us.craigmiller160.llm.ragpractice.lowlevel.config.MilvusProperties
+import us.craigmiller160.llm.ragpractice.lowlevel.openai.OpenaiProperties
+import us.craigmiller160.llm.ragpractice.lowlevel.utils.rpc.unwrap
 
 @Service
 class VectorSetupService(
