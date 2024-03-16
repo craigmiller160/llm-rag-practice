@@ -18,7 +18,7 @@ java {
 }
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter")
+    compileOnly("org.springframework.boot:spring-boot-starter")
 }
 
 tasks.withType<KotlinCompile> {
