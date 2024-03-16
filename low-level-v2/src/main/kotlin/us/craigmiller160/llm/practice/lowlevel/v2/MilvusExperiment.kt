@@ -3,9 +3,13 @@ package us.craigmiller160.llm.practice.lowlevel.v2
 import com.alibaba.fastjson.JSONObject
 import io.milvus.client.MilvusClient
 import io.milvus.grpc.DataType
+import io.milvus.param.IndexType
+import io.milvus.param.MetricType
 import io.milvus.param.collection.CreateCollectionParam
 import io.milvus.param.collection.FieldType
 import io.milvus.param.dml.InsertParam
+import io.milvus.param.dml.SearchParam
+import io.milvus.param.index.CreateIndexParam
 import java.util.UUID
 import org.slf4j.LoggerFactory
 import org.springframework.boot.context.event.ApplicationReadyEvent
@@ -34,6 +38,11 @@ class MilvusExperiment(
   fun onReady() {
     setupCollection()
     setupDocuments()
+    search()
+  }
+
+  private fun search() {
+    SearchParam.newBuilder().withCollectionName(COLLECTION_NAME)
   }
 
   private fun setupDocuments() {
@@ -106,6 +115,16 @@ class MilvusExperiment(
         .build()
         .let { milvusClient.createCollection(it) }
         .unwrap()
+
+    CreateIndexParam.newBuilder()
+        .withCollectionName(COLLECTION_NAME)
+        .withFieldName(VECTOR_FIELD_NAME)
+        .withMetricType(MetricType.COSINE)
+        .withIndexType(IndexType.FLAT)
+        .build()
+        .let { milvusClient.createIndex(it) }
+        .unwrap()
+
     log.info("Collection is setup")
   }
 }
