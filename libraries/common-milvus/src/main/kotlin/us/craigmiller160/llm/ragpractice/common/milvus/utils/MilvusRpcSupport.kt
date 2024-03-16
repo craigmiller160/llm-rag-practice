@@ -1,4 +1,4 @@
-package us.craigmiller160.llm.ragpractice.lowlevel.utils.rpc
+package us.craigmiller160.llm.ragpractice.common.milvus.utils
 
 import io.milvus.param.R
 

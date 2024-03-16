@@ -26,6 +26,7 @@ dependencies {
     implementation("io.milvus:milvus-sdk-java:2.3.4")
     implementation(project(":libraries:common-spring"))
     implementation(project(":libraries:common-spring-openai"))
+    implementation(project(":libraries:common-milvus"))
 }
 
 tasks.withType<KotlinCompile> {
