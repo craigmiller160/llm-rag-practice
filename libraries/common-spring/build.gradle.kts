@@ -1,5 +1,6 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import com.diffplug.gradle.spotless.SpotlessExtension
+import org.springframework.boot.gradle.tasks.bundling.BootJar
 
 plugins {
     val kotlinVersion = "2.0.0-Beta4"
@@ -31,4 +32,8 @@ configure<SpotlessExtension> {
     kotlin {
         ktfmt("0.43")
     }
+}
+
+tasks.withType<BootJar> {
+    enabled = false
 }
