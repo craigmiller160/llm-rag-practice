@@ -1,0 +1,6 @@
+POST http://localhost:8080/vector/document
+Content-Type: application/json
+
+{
+  "document": "My name is Craig Miller"
+}

@@ -1,0 +1,6 @@
+POST http://localhost:8080/chat/user
+Content-Type: application/json
+
+{
+  "message": "Say hello!"
+}

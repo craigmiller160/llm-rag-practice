@@ -1,0 +1,6 @@
+POST http://localhost:8080/vector/search
+Content-Type: application/json
+
+{
+  "query": "Are you Craig Miller?"
+}
