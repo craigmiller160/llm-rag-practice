@@ -49,11 +49,16 @@ class Experiment(private val milvusClient: MilvusClient, private val openaiClien
             .map { it.embedding }
 
     listOf(
-        InsertParam.Field(
-            ID_FIELD_NAME, listOf(UUID.randomUUID().toString(), UUID.randomUUID().toString())),
-        InsertParam.Field(TEXT_FIELD_NAME, listOf(text1, text2)),
-        InsertParam.Field(METADATA_FIELD_NAME, listOf(JSONObject(), JSONObject())),
-        InsertParam.Field(VECTOR_FIELD_NAME, listOf(embedding1, embedding2)))
+            InsertParam.Field(
+                ID_FIELD_NAME, listOf(UUID.randomUUID().toString(), UUID.randomUUID().toString())),
+            InsertParam.Field(TEXT_FIELD_NAME, listOf(text1, text2)),
+            InsertParam.Field(METADATA_FIELD_NAME, listOf(JSONObject(), JSONObject())),
+            InsertParam.Field(VECTOR_FIELD_NAME, listOf(embedding1, embedding2)))
+        .let { fields ->
+          InsertParam.newBuilder().withCollectionName(COLLECTION_NAME).withFields(fields).build()
+        }
+        .let { milvusClient.insert(it) }
+        .unwrap()
   }
 
   private fun setupCollection() {
