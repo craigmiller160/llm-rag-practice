@@ -42,7 +42,28 @@ class MilvusExperiment(
   }
 
   private fun search() {
-    SearchParam.newBuilder().withCollectionName(COLLECTION_NAME)
+    log.info("Preparing search embedding")
+    val searchText = "What is your favorite sport?"
+    val searchEmbedding =
+        CreateEmbeddingRequest(model = EmbeddingModel.TEXT_EMBEDDING_3_SMALL, input = searchText)
+            .let { openaiClient.createEmbedding(it) }
+            .data
+            .flatMap { it.embedding }
+    log.info("Search embedding prepared")
+
+    log.info("Performing search")
+    val searchResults =
+        SearchParam.newBuilder()
+            .withCollectionName(COLLECTION_NAME)
+            .withMetricType(MetricType.COSINE)
+            .withVectorFieldName(VECTOR_FIELD_NAME)
+            .withVectors(listOf(searchEmbedding))
+            .withTopK(1)
+            .withOutFields(listOf(ID_FIELD_NAME, TEXT_FIELD_NAME, METADATA_FIELD_NAME))
+            .build()
+            .let { milvusClient.search(it) }
+            .unwrap()
+    log.info("Search complete")
   }
 
   private fun setupDocuments() {
