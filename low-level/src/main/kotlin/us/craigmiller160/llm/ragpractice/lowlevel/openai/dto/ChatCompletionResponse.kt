@@ -1,11 +1,11 @@
 package us.craigmiller160.llm.ragpractice.lowlevel.openai.dto
 
 import com.fasterxml.jackson.annotation.JsonProperty
-import us.craigmiller160.ragpractice.openai.dto.common.ChatModel
-import us.craigmiller160.ragpractice.openai.dto.common.FinishReason
-import us.craigmiller160.ragpractice.openai.dto.common.Message
-import us.craigmiller160.ragpractice.openai.dto.common.ResponseObject
-import us.craigmiller160.ragpractice.openai.dto.common.Usage
+import us.craigmiller160.llm.ragpractice.lowlevel.openai.dto.common.ChatModel
+import us.craigmiller160.llm.ragpractice.lowlevel.openai.dto.common.FinishReason
+import us.craigmiller160.llm.ragpractice.lowlevel.openai.dto.common.Message
+import us.craigmiller160.llm.ragpractice.lowlevel.openai.dto.common.ResponseObject
+import us.craigmiller160.llm.ragpractice.lowlevel.openai.dto.common.Usage
 
 data class Choice(
     val index: Int,

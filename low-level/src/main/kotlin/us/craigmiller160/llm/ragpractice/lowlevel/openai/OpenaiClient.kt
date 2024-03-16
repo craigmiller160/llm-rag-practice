@@ -3,11 +3,11 @@ package us.craigmiller160.llm.ragpractice.lowlevel.openai
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory
 import org.springframework.stereotype.Component
 import org.springframework.web.client.RestClient
-import us.craigmiller160.ragpractice.openai.dto.ChatCompletionRequest
-import us.craigmiller160.ragpractice.openai.dto.ChatCompletionResponse
-import us.craigmiller160.ragpractice.openai.dto.CreateEmbeddingRequest
-import us.craigmiller160.ragpractice.openai.dto.CreateEmbeddingResponse
-import us.craigmiller160.ragpractice.openai.dto.common.Message
+import us.craigmiller160.llm.ragpractice.lowlevel.openai.dto.ChatCompletionRequest
+import us.craigmiller160.llm.ragpractice.lowlevel.openai.dto.ChatCompletionResponse
+import us.craigmiller160.llm.ragpractice.lowlevel.openai.dto.CreateEmbeddingRequest
+import us.craigmiller160.llm.ragpractice.lowlevel.openai.dto.CreateEmbeddingResponse
+import us.craigmiller160.llm.ragpractice.lowlevel.openai.dto.common.Message
 
 @Component
 class OpenaiClient(private val props: OpenaiProperties) {
