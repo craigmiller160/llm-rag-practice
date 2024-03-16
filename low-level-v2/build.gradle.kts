@@ -22,7 +22,6 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     implementation("org.apache.httpcomponents.client5:httpclient5:5.3.1")
-    implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
     implementation("io.milvus:milvus-sdk-java:2.3.4")
     implementation(project(":libraries:common-spring"))
     implementation(project(":libraries:common-spring-openai"))
