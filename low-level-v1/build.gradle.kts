@@ -13,7 +13,7 @@ plugins {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_21
+    sourceCompatibility = JavaVersion.VERSION_20
 }
 
 dependencies {
