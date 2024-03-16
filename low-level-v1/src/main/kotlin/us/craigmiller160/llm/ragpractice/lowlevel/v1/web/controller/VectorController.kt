@@ -1,13 +1,13 @@
-package us.craigmiller160.llm.ragpractice.lowlevel.web.controller
+package us.craigmiller160.llm.ragpractice.lowlevel.v1.web.controller
 
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
-import us.craigmiller160.llm.ragpractice.lowlevel.web.dto.SearchRequest
-import us.craigmiller160.llm.ragpractice.lowlevel.web.dto.StoreDocumentRequest
-import us.craigmiller160.llm.ragpractice.lowlevel.web.dto.StoreDocumentResponse
-import us.craigmiller160.llm.ragpractice.lowlevel.web.service.VectorService
+import us.craigmiller160.llm.ragpractice.lowlevel.v1.web.dto.SearchRequest
+import us.craigmiller160.llm.ragpractice.lowlevel.v1.web.dto.StoreDocumentRequest
+import us.craigmiller160.llm.ragpractice.lowlevel.v1.web.dto.StoreDocumentResponse
+import us.craigmiller160.llm.ragpractice.lowlevel.v1.web.service.VectorService
 
 @RestController
 @RequestMapping("/vector")

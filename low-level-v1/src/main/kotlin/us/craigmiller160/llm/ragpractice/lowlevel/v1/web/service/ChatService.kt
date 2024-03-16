@@ -1,13 +1,13 @@
-package us.craigmiller160.llm.ragpractice.lowlevel.web.service
+package us.craigmiller160.llm.ragpractice.lowlevel.v1.web.service
 
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 import us.craigmiller160.llm.ragpractice.common.spring.openai.OpenaiClient
 import us.craigmiller160.llm.ragpractice.common.spring.openai.dto.dto.ChatCompletionRequest
 import us.craigmiller160.llm.ragpractice.common.spring.openai.dto.dto.common.UserMessage
-import us.craigmiller160.llm.ragpractice.lowlevel.openai.OpenaiProperties
-import us.craigmiller160.llm.ragpractice.lowlevel.web.dto.ChatRequest
-import us.craigmiller160.llm.ragpractice.lowlevel.web.dto.ChatResponse
+import us.craigmiller160.llm.ragpractice.lowlevel.v1.openai.OpenaiProperties
+import us.craigmiller160.llm.ragpractice.lowlevel.v1.web.dto.ChatRequest
+import us.craigmiller160.llm.ragpractice.lowlevel.v1.web.dto.ChatResponse
 
 @Service
 class ChatService(private val client: OpenaiClient, private val props: OpenaiProperties) {

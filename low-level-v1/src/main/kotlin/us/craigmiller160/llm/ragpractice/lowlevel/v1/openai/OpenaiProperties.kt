@@ -1,4 +1,4 @@
-package us.craigmiller160.llm.ragpractice.lowlevel.openai
+package us.craigmiller160.llm.ragpractice.lowlevel.v1.openai
 
 import org.springframework.boot.context.properties.ConfigurationProperties
 import us.craigmiller160.llm.ragpractice.common.spring.openai.dto.dto.common.ChatModel

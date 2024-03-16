@@ -1,12 +1,12 @@
-package us.craigmiller160.llm.ragpractice.lowlevel.web.controller
+package us.craigmiller160.llm.ragpractice.lowlevel.v1.web.controller
 
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
-import us.craigmiller160.llm.ragpractice.lowlevel.web.dto.ChatRequest
-import us.craigmiller160.llm.ragpractice.lowlevel.web.dto.ChatResponse
-import us.craigmiller160.llm.ragpractice.lowlevel.web.service.ChatService
+import us.craigmiller160.llm.ragpractice.lowlevel.v1.web.dto.ChatRequest
+import us.craigmiller160.llm.ragpractice.lowlevel.v1.web.dto.ChatResponse
+import us.craigmiller160.llm.ragpractice.lowlevel.v1.web.service.ChatService
 
 @RestController
 @RequestMapping("/chat")

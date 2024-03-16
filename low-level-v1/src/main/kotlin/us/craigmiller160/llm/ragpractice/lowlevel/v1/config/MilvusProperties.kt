@@ -1,4 +1,4 @@
-package us.craigmiller160.llm.ragpractice.lowlevel.config
+package us.craigmiller160.llm.ragpractice.lowlevel.v1.config
 
 import org.springframework.boot.context.properties.ConfigurationProperties
 

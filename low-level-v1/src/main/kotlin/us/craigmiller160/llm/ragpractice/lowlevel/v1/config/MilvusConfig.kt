@@ -1,4 +1,4 @@
-package us.craigmiller160.llm.ragpractice.lowlevel.config
+package us.craigmiller160.llm.ragpractice.lowlevel.v1.config
 
 import io.milvus.client.MilvusClient
 import io.milvus.client.MilvusServiceClient

@@ -1,4 +1,4 @@
-package us.craigmiller160.llm.ragpractice.lowlevel.web.service
+package us.craigmiller160.llm.ragpractice.lowlevel.v1.web.service
 
 import io.milvus.client.MilvusClient
 import io.milvus.common.clientenum.ConsistencyLevelEnum
@@ -14,12 +14,12 @@ import org.springframework.stereotype.Service
 import us.craigmiller160.llm.ragpractice.common.milvus.utils.unwrap
 import us.craigmiller160.llm.ragpractice.common.spring.openai.OpenaiClient
 import us.craigmiller160.llm.ragpractice.common.spring.openai.dto.dto.CreateEmbeddingRequest
-import us.craigmiller160.llm.ragpractice.lowlevel.config.MilvusProperties
-import us.craigmiller160.llm.ragpractice.lowlevel.config.MongoCollectionProperties
-import us.craigmiller160.llm.ragpractice.lowlevel.openai.OpenaiProperties
-import us.craigmiller160.llm.ragpractice.lowlevel.web.dto.SearchRequest
-import us.craigmiller160.llm.ragpractice.lowlevel.web.dto.StoreDocumentRequest
-import us.craigmiller160.llm.ragpractice.lowlevel.web.dto.StoreDocumentResponse
+import us.craigmiller160.llm.ragpractice.lowlevel.v1.config.MilvusProperties
+import us.craigmiller160.llm.ragpractice.lowlevel.v1.config.MongoCollectionProperties
+import us.craigmiller160.llm.ragpractice.lowlevel.v1.openai.OpenaiProperties
+import us.craigmiller160.llm.ragpractice.lowlevel.v1.web.dto.SearchRequest
+import us.craigmiller160.llm.ragpractice.lowlevel.v1.web.dto.StoreDocumentRequest
+import us.craigmiller160.llm.ragpractice.lowlevel.v1.web.dto.StoreDocumentResponse
 
 @Service
 class VectorService(

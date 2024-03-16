@@ -1,4 +1,4 @@
-package us.craigmiller160.llm.ragpractice.lowlevel.web.service
+package us.craigmiller160.llm.ragpractice.lowlevel.v1.web.service
 
 import io.milvus.client.MilvusClient
 import io.milvus.grpc.DataType
@@ -14,8 +14,8 @@ import org.springframework.boot.context.event.ApplicationReadyEvent
 import org.springframework.context.event.EventListener
 import org.springframework.stereotype.Service
 import us.craigmiller160.llm.ragpractice.common.milvus.utils.unwrap
-import us.craigmiller160.llm.ragpractice.lowlevel.config.MilvusProperties
-import us.craigmiller160.llm.ragpractice.lowlevel.openai.OpenaiProperties
+import us.craigmiller160.llm.ragpractice.lowlevel.v1.config.MilvusProperties
+import us.craigmiller160.llm.ragpractice.lowlevel.v1.openai.OpenaiProperties
 
 @Service
 class VectorSetupService(
