@@ -7,6 +7,7 @@ import io.milvus.param.IndexType
 import io.milvus.param.MetricType
 import io.milvus.param.collection.CreateCollectionParam
 import io.milvus.param.collection.FieldType
+import io.milvus.param.collection.LoadCollectionParam
 import io.milvus.param.dml.InsertParam
 import io.milvus.param.dml.SearchParam
 import io.milvus.param.index.CreateIndexParam
@@ -36,12 +37,21 @@ class MilvusExperiment(
   private val log = LoggerFactory.getLogger(javaClass)
   @EventListener(ApplicationReadyEvent::class)
   fun onReady() {
-    setupCollection()
-    setupDocuments()
+    //    setupCollection()
+    //    setupDocuments()
     search()
   }
 
   private fun search() {
+    log.info("Loading collection")
+    LoadCollectionParam.newBuilder()
+        .withCollectionName(COLLECTION_NAME)
+        .build()
+        .let { milvusClient.loadCollection(it) }
+        .unwrap()
+
+    log.info("Collection loaded")
+
     log.info("Preparing search embedding")
     val searchText = "What is your favorite sport?"
     val searchEmbedding =
