@@ -2,8 +2,8 @@ package us.craigmiller160.llm.ragpractice.lowlevel.web.service
 
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
+import us.craigmiller160.llm.ragpractice.common.spring.openai.dto.dto.common.UserMessage
 import us.craigmiller160.llm.ragpractice.lowlevel.openai.OpenaiClient
-import us.craigmiller160.llm.ragpractice.lowlevel.openai.dto.common.UserMessage
 import us.craigmiller160.llm.ragpractice.lowlevel.web.dto.ChatRequest
 import us.craigmiller160.llm.ragpractice.lowlevel.web.dto.ChatResponse
 

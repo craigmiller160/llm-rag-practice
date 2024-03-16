@@ -1,8 +1,8 @@
 package us.craigmiller160.llm.ragpractice.lowlevel.openai
 
 import org.springframework.boot.context.properties.ConfigurationProperties
-import us.craigmiller160.llm.ragpractice.lowlevel.openai.dto.common.ChatModel
-import us.craigmiller160.llm.ragpractice.lowlevel.openai.dto.common.EmbeddingModel
+import us.craigmiller160.llm.ragpractice.common.spring.openai.dto.dto.common.ChatModel
+import us.craigmiller160.llm.ragpractice.common.spring.openai.dto.dto.common.EmbeddingModel
 
 data class OpenaiParsedModels(val chat: ChatModel, val embedding: EmbeddingModel)
 

@@ -1,4 +1,4 @@
-package us.craigmiller160.llm.ragpractice.lowlevel.openai.dto.common
+package us.craigmiller160.llm.ragpractice.common.spring.openai.dto.dto.common
 
 import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonValue
@@ -10,7 +10,7 @@ enum class MessageRole {
   TOOL;
 
   companion object {
-    @JsonCreator fun parse(value: String): MessageRole = MessageRole.parse(value.uppercase())
+    @JsonCreator fun parse(value: String): MessageRole = parse(value.uppercase())
   }
 
   @JsonValue val value: String = name.lowercase()

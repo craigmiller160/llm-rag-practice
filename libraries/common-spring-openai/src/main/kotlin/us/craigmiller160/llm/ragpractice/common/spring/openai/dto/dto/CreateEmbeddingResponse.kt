@@ -1,6 +1,6 @@
-package us.craigmiller160.llm.ragpractice.lowlevel.openai.dto
+package us.craigmiller160.llm.ragpractice.common.spring.openai.dto.dto
 
-import us.craigmiller160.llm.ragpractice.lowlevel.openai.dto.common.ResponseObject
+import us.craigmiller160.llm.ragpractice.common.spring.openai.dto.dto.common.ResponseObject
 
 data class EmbeddingRecord(
     val `object`: ResponseObject,

@@ -1,4 +1,4 @@
-package us.craigmiller160.llm.ragpractice.lowlevel.openai.dto.common
+package us.craigmiller160.llm.ragpractice.common.spring.openai.dto.dto.common
 
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
