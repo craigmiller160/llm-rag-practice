@@ -11,6 +11,7 @@ import io.milvus.param.collection.LoadCollectionParam
 import io.milvus.param.dml.InsertParam
 import io.milvus.param.dml.SearchParam
 import io.milvus.param.index.CreateIndexParam
+import io.milvus.response.SearchResultsWrapper
 import java.util.UUID
 import org.slf4j.LoggerFactory
 import org.springframework.boot.context.event.ApplicationReadyEvent
@@ -74,6 +75,10 @@ class MilvusExperiment(
             .let { milvusClient.search(it) }
             .unwrap()
     log.info("Search complete")
+
+    val resultsWrapper = SearchResultsWrapper(searchResults.results)
+    val textField = resultsWrapper.getFieldWrapper(TEXT_FIELD_NAME)
+    println(textField)
   }
 
   private fun setupDocuments() {
