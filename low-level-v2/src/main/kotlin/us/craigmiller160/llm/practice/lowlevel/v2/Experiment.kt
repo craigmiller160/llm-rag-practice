@@ -48,6 +48,7 @@ class Experiment(private val milvusClient: MilvusClient, private val openaiClien
             .data
             .map { it.embedding }
 
+    log.info("Writing documents to vector store")
     listOf(
             InsertParam.Field(
                 ID_FIELD_NAME, listOf(UUID.randomUUID().toString(), UUID.randomUUID().toString())),
@@ -59,6 +60,7 @@ class Experiment(private val milvusClient: MilvusClient, private val openaiClien
         }
         .let { milvusClient.insert(it) }
         .unwrap()
+    log.info("Document writing to vector store complete")
   }
 
   private fun setupCollection() {
