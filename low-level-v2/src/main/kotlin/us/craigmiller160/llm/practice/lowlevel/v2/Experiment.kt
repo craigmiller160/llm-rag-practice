@@ -4,6 +4,7 @@ import io.milvus.client.MilvusClient
 import io.milvus.grpc.DataType
 import io.milvus.param.collection.CreateCollectionParam
 import io.milvus.param.collection.FieldType
+import org.slf4j.LoggerFactory
 import org.springframework.boot.context.event.ApplicationReadyEvent
 import org.springframework.context.event.EventListener
 import org.springframework.stereotype.Component
@@ -20,12 +21,15 @@ class Experiment(private val milvusClient: MilvusClient, private val openaiClien
     const val METADATA_FIELD_NAME = "metadata"
     const val VECTOR_FIELD_NAME = "vector"
   }
+
+  private val log = LoggerFactory.getLogger(javaClass)
   @EventListener(ApplicationReadyEvent::class)
   fun onReady() {
     setupCollection()
   }
 
   private fun setupCollection() {
+    log.info("Setting up collection")
     val idField =
         FieldType.newBuilder()
             .withName(ID_FIELD_NAME)
@@ -61,5 +65,6 @@ class Experiment(private val milvusClient: MilvusClient, private val openaiClien
         .build()
         .let { milvusClient.createCollection(it) }
         .unwrap()
+    log.info("Collection is setup")
   }
 }
