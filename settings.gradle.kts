@@ -7,5 +7,6 @@ include(
     "libraries:common-spring-openai",
     "libraries:common-milvus",
     "low-level-v1",
-    "langchain-v1"
+    "langchain-v1",
+    "low-level-v2"
 )
