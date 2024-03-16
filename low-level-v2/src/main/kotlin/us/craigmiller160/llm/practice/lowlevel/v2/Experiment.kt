@@ -1,5 +1,6 @@
 package us.craigmiller160.llm.practice.lowlevel.v2
 
+import com.alibaba.fastjson.JSONObject
 import io.milvus.client.MilvusClient
 import io.milvus.grpc.DataType
 import io.milvus.param.collection.CreateCollectionParam
@@ -51,7 +52,7 @@ class Experiment(private val milvusClient: MilvusClient, private val openaiClien
         InsertParam.Field(
             ID_FIELD_NAME, listOf(UUID.randomUUID().toString(), UUID.randomUUID().toString())),
         InsertParam.Field(TEXT_FIELD_NAME, listOf(text1, text2)),
-        InsertParam.Field(METADATA_FIELD_NAME, listOf("", "")),
+        InsertParam.Field(METADATA_FIELD_NAME, listOf(JSONObject(), JSONObject())),
         InsertParam.Field(VECTOR_FIELD_NAME, listOf(embedding1, embedding2)))
   }
 
