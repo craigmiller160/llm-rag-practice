@@ -12,8 +12,10 @@ import org.slf4j.LoggerFactory
 import org.springframework.data.mongodb.core.MongoTemplate
 import org.springframework.stereotype.Service
 import us.craigmiller160.llm.ragpractice.common.spring.openai.OpenaiClient
+import us.craigmiller160.llm.ragpractice.common.spring.openai.dto.dto.CreateEmbeddingRequest
 import us.craigmiller160.llm.ragpractice.lowlevel.config.MilvusProperties
 import us.craigmiller160.llm.ragpractice.lowlevel.config.MongoCollectionProperties
+import us.craigmiller160.llm.ragpractice.lowlevel.openai.OpenaiProperties
 import us.craigmiller160.llm.ragpractice.lowlevel.utils.rpc.unwrap
 import us.craigmiller160.llm.ragpractice.lowlevel.web.dto.SearchRequest
 import us.craigmiller160.llm.ragpractice.lowlevel.web.dto.StoreDocumentRequest
@@ -25,15 +27,19 @@ class VectorService(
     private val milvusProps: MilvusProperties,
     private val mongoTemplate: MongoTemplate,
     private val mongoCollectionProps: MongoCollectionProperties,
-    private val openaiClient: OpenaiClient
+    private val openaiClient: OpenaiClient,
+    private val openaiProps: OpenaiProperties
 ) {
   private val log = LoggerFactory.getLogger(javaClass)
 
   fun search(request: SearchRequest) {
     log.info("Performing search")
     val start = System.nanoTime()
-    val embeddingResponse = openaiClient.createEmbedding(request.query)
-    val vectors = embeddingResponse.data.map { it.embedding }
+    val queryVectors =
+        CreateEmbeddingRequest(model = openaiProps.models.parsed.embedding, input = request.query)
+            .let { openaiClient.createEmbedding(it) }
+            .data
+            .map { it.embedding }
 
     try {
       LoadCollectionParam.newBuilder()
@@ -49,7 +55,7 @@ class VectorService(
               .withMetricType(MetricType.COSINE)
               .withOutFields(listOf("document_mongo_id", "document_vector"))
               .withVectorFieldName("document_vector")
-              .withVectors(vectors)
+              .withVectors(queryVectors)
               //              .withParams("""{"nprobe":10, "offset":0}""")
               .withTopK(10)
               .build()
@@ -74,10 +80,11 @@ class VectorService(
             .let { mongoTemplate.save(it, mongoCollectionProps.documents) }
             .getObjectId("_id")
             .toHexString()
-    val embeddingResponse = openaiClient.createEmbedding(request.document)
-
     val results =
-        embeddingResponse.data
+        CreateEmbeddingRequest(
+                model = openaiProps.models.parsed.embedding, input = request.document)
+            .let { openaiClient.createEmbedding(it) }
+            .data
             .map { it.embedding }
             .map { embedding ->
               listOf(
