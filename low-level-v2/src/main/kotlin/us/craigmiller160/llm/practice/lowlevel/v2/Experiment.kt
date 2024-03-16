@@ -34,6 +34,7 @@ class Experiment(private val milvusClient: MilvusClient, private val openaiClien
   }
 
   private fun setupDocuments() {
+    log.info("Creating embeddings for documents")
     val text1 = "I like football."
     val embedding1 =
         CreateEmbeddingRequest(model = EmbeddingModel.TEXT_EMBEDDING_3_SMALL, input = text1)
@@ -47,6 +48,8 @@ class Experiment(private val milvusClient: MilvusClient, private val openaiClien
             .let { openaiClient.createEmbedding(it) }
             .data
             .map { it.embedding }
+
+    log.info("Embeddings created")
 
     log.info("Writing documents to vector store")
     listOf(
