@@ -4,10 +4,10 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
-import us.craigmiller160.ragpractice.web.dto.SearchRequest
-import us.craigmiller160.ragpractice.web.dto.StoreDocumentRequest
-import us.craigmiller160.ragpractice.web.dto.StoreDocumentResponse
-import us.craigmiller160.ragpractice.web.service.VectorService
+import us.craigmiller160.llm.ragpractice.lowlevel.web.dto.SearchRequest
+import us.craigmiller160.llm.ragpractice.lowlevel.web.dto.StoreDocumentRequest
+import us.craigmiller160.llm.ragpractice.lowlevel.web.dto.StoreDocumentResponse
+import us.craigmiller160.llm.ragpractice.lowlevel.web.service.VectorService
 
 @RestController
 @RequestMapping("/vector")
