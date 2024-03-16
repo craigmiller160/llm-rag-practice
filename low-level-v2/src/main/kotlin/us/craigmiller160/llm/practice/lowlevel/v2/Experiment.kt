@@ -40,14 +40,14 @@ class Experiment(private val milvusClient: MilvusClient, private val openaiClien
         CreateEmbeddingRequest(model = EmbeddingModel.TEXT_EMBEDDING_3_SMALL, input = text1)
             .let { openaiClient.createEmbedding(it) }
             .data
-            .map { it.embedding }
+            .flatMap { it.embedding }
 
     val text2 = "The weather is good today."
     val embedding2 =
         CreateEmbeddingRequest(model = EmbeddingModel.TEXT_EMBEDDING_3_SMALL, input = text2)
             .let { openaiClient.createEmbedding(it) }
             .data
-            .map { it.embedding }
+            .flatMap { it.embedding }
 
     log.info("Embeddings created")
 
