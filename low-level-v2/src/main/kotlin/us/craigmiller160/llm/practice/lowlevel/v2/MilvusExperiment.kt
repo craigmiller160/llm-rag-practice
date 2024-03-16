@@ -40,6 +40,7 @@ class MilvusExperiment(
   fun onReady() {
     setupCollection()
     setupDocuments()
+    loadCollection()
     search()
   }
 
@@ -71,6 +72,17 @@ class MilvusExperiment(
     val resultsWrapper = SearchResultsWrapper(searchResults.results)
     val textField = resultsWrapper.getFieldWrapper(TEXT_FIELD_NAME)
     println(textField)
+  }
+
+  private fun loadCollection() {
+    log.info("Loading collection")
+    LoadCollectionParam.newBuilder()
+        .withCollectionName(COLLECTION_NAME)
+        .build()
+        .let { milvusClient.loadCollection(it) }
+        .unwrap()
+
+    log.info("Collection loaded")
   }
 
   private fun setupDocuments() {
@@ -154,14 +166,5 @@ class MilvusExperiment(
         .unwrap()
 
     log.info("Collection is setup")
-
-    log.info("Loading collection")
-    LoadCollectionParam.newBuilder()
-        .withCollectionName(COLLECTION_NAME)
-        .build()
-        .let { milvusClient.loadCollection(it) }
-        .unwrap()
-
-    log.info("Collection loaded")
   }
 }
