@@ -6,7 +6,7 @@ import org.springframework.context.annotation.PropertySource
 import us.craigmiller160.llm.ragpractice.common.spring.properties.YamlPropertyLoaderFactory
 
 @SpringBootApplication
-@PropertySource("file:../secrets.yml", factory = YamlPropertyLoaderFactory::class)
+@PropertySource("file:./secrets.yml", factory = YamlPropertyLoaderFactory::class)
 class Runner
 
 fun main(args: Array<String>) {

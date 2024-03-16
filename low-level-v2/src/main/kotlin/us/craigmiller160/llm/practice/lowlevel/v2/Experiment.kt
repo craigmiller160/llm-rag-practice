@@ -4,12 +4,15 @@ import io.milvus.client.MilvusClient
 import io.milvus.grpc.DataType
 import io.milvus.param.collection.CreateCollectionParam
 import io.milvus.param.collection.FieldType
+import io.milvus.param.dml.InsertParam
+import java.util.UUID
 import org.slf4j.LoggerFactory
 import org.springframework.boot.context.event.ApplicationReadyEvent
 import org.springframework.context.event.EventListener
 import org.springframework.stereotype.Component
 import us.craigmiller160.llm.ragpractice.common.milvus.utils.unwrap
 import us.craigmiller160.llm.ragpractice.common.spring.openai.OpenaiClient
+import us.craigmiller160.llm.ragpractice.common.spring.openai.dto.dto.CreateEmbeddingRequest
 import us.craigmiller160.llm.ragpractice.common.spring.openai.dto.dto.common.EmbeddingModel
 
 @Component
@@ -26,6 +29,30 @@ class Experiment(private val milvusClient: MilvusClient, private val openaiClien
   @EventListener(ApplicationReadyEvent::class)
   fun onReady() {
     setupCollection()
+    setupDocuments()
+  }
+
+  private fun setupDocuments() {
+    val text1 = "I like football."
+    val embedding1 =
+        CreateEmbeddingRequest(model = EmbeddingModel.TEXT_EMBEDDING_3_SMALL, input = text1)
+            .let { openaiClient.createEmbedding(it) }
+            .data
+            .map { it.embedding }
+
+    val text2 = "The weather is good today."
+    val embedding2 =
+        CreateEmbeddingRequest(model = EmbeddingModel.TEXT_EMBEDDING_3_SMALL, input = text2)
+            .let { openaiClient.createEmbedding(it) }
+            .data
+            .map { it.embedding }
+
+    listOf(
+        InsertParam.Field(
+            ID_FIELD_NAME, listOf(UUID.randomUUID().toString(), UUID.randomUUID().toString())),
+        InsertParam.Field(TEXT_FIELD_NAME, listOf(text1, text2)),
+        InsertParam.Field(METADATA_FIELD_NAME, listOf("", "")),
+        InsertParam.Field(VECTOR_FIELD_NAME, listOf(embedding1, embedding2)))
   }
 
   private fun setupCollection() {
