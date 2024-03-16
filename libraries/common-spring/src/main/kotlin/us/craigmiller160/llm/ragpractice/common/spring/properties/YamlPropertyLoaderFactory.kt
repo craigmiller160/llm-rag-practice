@@ -1,4 +1,4 @@
-package us.craigmiller160.llm.ragpractice.lowlevel.springsupport
+package us.craigmiller160.llm.ragpractice.common.spring.properties
 
 import org.springframework.beans.factory.config.YamlPropertiesFactoryBean
 import org.springframework.core.env.PropertiesPropertySource
