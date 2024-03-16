@@ -17,7 +17,10 @@ import us.craigmiller160.llm.ragpractice.common.spring.openai.dto.dto.CreateEmbe
 import us.craigmiller160.llm.ragpractice.common.spring.openai.dto.dto.common.EmbeddingModel
 
 @Component
-class Experiment(private val milvusClient: MilvusClient, private val openaiClient: OpenaiClient) {
+class MilvusExperiment(
+    private val milvusClient: MilvusClient,
+    private val openaiClient: OpenaiClient
+) {
   companion object {
     const val COLLECTION_NAME = "my_collection"
     const val ID_FIELD_NAME = "id"
