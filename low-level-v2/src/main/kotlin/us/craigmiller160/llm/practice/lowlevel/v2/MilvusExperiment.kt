@@ -9,6 +9,7 @@ import io.milvus.param.collection.CreateCollectionParam
 import io.milvus.param.collection.FieldType
 import io.milvus.param.collection.FlushParam
 import io.milvus.param.collection.LoadCollectionParam
+import io.milvus.param.collection.ReleaseCollectionParam
 import io.milvus.param.dml.InsertParam
 import io.milvus.param.dml.SearchParam
 import io.milvus.param.index.CreateIndexParam
@@ -43,10 +44,18 @@ class MilvusExperiment(
     setupDocuments()
     loadCollection()
     search()
+    releaseCollection()
+  }
+
+  private fun releaseCollection() {
+    ReleaseCollectionParam.newBuilder()
+        .withCollectionName(COLLECTION_NAME)
+        .build()
+        .let { milvusClient.releaseCollection(it) }
+        .unwrap()
   }
 
   private fun search() {
-
     log.info("Preparing search embedding")
     val searchText = "What is your favorite sport?"
     val searchEmbedding =
