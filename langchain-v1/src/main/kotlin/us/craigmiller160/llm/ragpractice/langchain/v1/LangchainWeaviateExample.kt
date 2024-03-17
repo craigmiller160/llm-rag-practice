@@ -16,7 +16,7 @@ class LangchainWeaviateExample {
             .scheme("http")
             .host("localhost")
             .port(8081)
-            .objectClass("Test") // TODO wtf is this?
+            .objectClass("Test")
             .avoidDups(true)
             .consistencyLevel("ALL")
             .build()
