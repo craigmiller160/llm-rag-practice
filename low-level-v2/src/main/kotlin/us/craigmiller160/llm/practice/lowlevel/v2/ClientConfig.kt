@@ -10,7 +10,7 @@ import us.craigmiller160.llm.ragpractice.common.spring.openai.OpenaiClient
 
 @Configuration
 class ClientConfig {
-  @Bean
+  //  @Bean
   fun milvusClient(): MilvusClient {
     val connectParam = ConnectParam.newBuilder().withHost("localhost").withPort(19530).build()
     return MilvusServiceClient(connectParam)
