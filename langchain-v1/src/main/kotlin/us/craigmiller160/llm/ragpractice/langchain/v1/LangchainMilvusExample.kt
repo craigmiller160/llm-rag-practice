@@ -7,10 +7,9 @@ import io.milvus.param.IndexType
 import io.milvus.param.MetricType
 import org.springframework.boot.context.event.ApplicationReadyEvent
 import org.springframework.context.event.EventListener
-import org.springframework.stereotype.Service
 
-@Service
-class LangchainExample {
+// @Service
+class LangchainMilvusExample {
   @EventListener(ApplicationReadyEvent::class)
   fun onApplicationReady() {
     println("Starting example")

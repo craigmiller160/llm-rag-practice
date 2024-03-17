@@ -25,6 +25,7 @@ dependencies {
     implementation("dev.langchain4j:langchain4j:$langchainVersion")
     implementation("dev.langchain4j:langchain4j-milvus:$langchainVersion")
     implementation("dev.langchain4j:langchain4j-embeddings-all-minilm-l6-v2:$langchainVersion")
+    implementation("dev.langchain4j:langchain4j-chroma:$langchainVersion")
 }
 
 tasks.withType<KotlinCompile> {
