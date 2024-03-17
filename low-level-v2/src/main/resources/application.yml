@@ -1,0 +1,3 @@
+logging:
+  level:
+    us.craigmiller160: DEBUG
