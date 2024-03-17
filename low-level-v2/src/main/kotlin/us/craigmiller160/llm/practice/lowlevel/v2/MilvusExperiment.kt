@@ -39,10 +39,14 @@ class MilvusExperiment(
   private val log = LoggerFactory.getLogger(javaClass)
   @EventListener(ApplicationReadyEvent::class)
   fun onReady() {
-    setupCollection()
-    setupDocuments()
+    prepare()
     loadCollection()
     search()
+  }
+
+  private fun prepare() {
+    setupCollection()
+    setupDocuments()
   }
 
   private fun search() {
