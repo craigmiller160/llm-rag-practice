@@ -5,9 +5,8 @@ import dev.langchain4j.model.embedding.AllMiniLmL6V2EmbeddingModel
 import dev.langchain4j.store.embedding.chroma.ChromaEmbeddingStore
 import org.springframework.boot.context.event.ApplicationReadyEvent
 import org.springframework.context.event.EventListener
-import org.springframework.stereotype.Component
 
-@Component
+// @Component
 class LangchainChromaExample {
   companion object {
     const val COLLECTION_NAME = "my_collection"
