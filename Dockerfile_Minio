@@ -1,0 +1,5 @@
+FROM quay.io/curl/curl:latest as curl
+
+FROM minio/minio:RELEASE.2024-03-15T01-07-19Z
+
+COPY --from curl /usr/bin/curl /usr/bin/
