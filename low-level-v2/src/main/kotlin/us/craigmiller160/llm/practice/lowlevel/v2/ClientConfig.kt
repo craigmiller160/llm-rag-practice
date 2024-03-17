@@ -6,6 +6,7 @@ import io.milvus.param.ConnectParam
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import tech.amikos.chromadb.Client
 import us.craigmiller160.llm.ragpractice.common.spring.openai.OpenaiClient
 
 @Configuration
@@ -15,6 +16,8 @@ class ClientConfig {
     val connectParam = ConnectParam.newBuilder().withHost("localhost").withPort(19530).build()
     return MilvusServiceClient(connectParam)
   }
+
+  @Bean fun chromaClient(): Client = Client("localhost:8000")
 
   @Bean
   fun openaiClient(@Value("\${openai.key}") apiKey: String): OpenaiClient =

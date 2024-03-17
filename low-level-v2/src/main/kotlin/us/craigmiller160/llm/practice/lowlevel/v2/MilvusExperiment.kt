@@ -18,13 +18,12 @@ import java.util.UUID
 import org.slf4j.LoggerFactory
 import org.springframework.boot.context.event.ApplicationReadyEvent
 import org.springframework.context.event.EventListener
-import org.springframework.stereotype.Component
 import us.craigmiller160.llm.ragpractice.common.milvus.utils.unwrap
 import us.craigmiller160.llm.ragpractice.common.spring.openai.OpenaiClient
 import us.craigmiller160.llm.ragpractice.common.spring.openai.dto.dto.CreateEmbeddingRequest
 import us.craigmiller160.llm.ragpractice.common.spring.openai.dto.dto.common.EmbeddingModel
 
-@Component
+// @Component
 class MilvusExperiment(
     private val milvusClient: MilvusClient,
     private val openaiClient: OpenaiClient
