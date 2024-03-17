@@ -27,6 +27,7 @@ dependencies {
     implementation("dev.langchain4j:langchain4j-embeddings-all-minilm-l6-v2:$langchainVersion")
     implementation("dev.langchain4j:langchain4j-chroma:$langchainVersion")
     implementation("dev.langchain4j:langchain4j-open-ai:$langchainVersion")
+    implementation("dev.langchain4j:langchain4j-weaviate:$langchainVersion")
     implementation(project(":libraries:common-spring"))
 }
 
