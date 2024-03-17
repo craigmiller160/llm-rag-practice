@@ -48,11 +48,13 @@ class MilvusExperiment(
   }
 
   private fun releaseCollection() {
+    log.info("Releasing collection")
     ReleaseCollectionParam.newBuilder()
         .withCollectionName(COLLECTION_NAME)
         .build()
         .let { milvusClient.releaseCollection(it) }
         .unwrap()
+    log.info("Collection released")
   }
 
   private fun search() {
