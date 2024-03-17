@@ -2,6 +2,8 @@ version: '3.9'
 
 services:
   etcd:
+    profiles:
+      - milvus
     container_name: milvus-etcd
     image: quay.io/coreos/etcd:v3.5.12
     platform: linux/amd64
@@ -20,6 +22,8 @@ services:
       retries: 3
 
   minio:
+    profiles:
+      - milvus
     container_name: milvus-minio
     image: minio/minio:RELEASE.2023-03-20T20-16-18Z
     platform: linux/amd64
@@ -39,6 +43,8 @@ services:
       retries: 3
 
   standalone:
+    profiles:
+      - mivlus
     container_name: milvus-standalone
     image: milvusdb/milvus:v2.3.9
     platform: linux/amd64
@@ -62,6 +68,8 @@ services:
       - "minio"
 
   mongodb:
+    profiles:
+      - mongo
     container_name: mongodb
     image: mongo:4.4.29
     platform: linux/amd64
@@ -74,6 +82,8 @@ services:
       - '27017:27017'
 
   attu:
+    profiles:
+      - visibility
     container_name: attu
     image: zilliz/attu:v2.3.8
     platform: linux/amd64
