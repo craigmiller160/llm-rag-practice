@@ -25,6 +25,7 @@ dependencies {
     implementation("org.apache.httpcomponents.client5:httpclient5:5.3.1")
     implementation("io.github.amikos-tech:chromadb-java-client:0.1.4")
     implementation("io.milvus:milvus-sdk-java:2.3.4")
+    implementation("io.weaviate:client:4.6.0")
     implementation(project(":libraries:common-spring"))
     implementation(project(":libraries:common-spring-openai"))
     implementation(project(":libraries:common-milvus"))

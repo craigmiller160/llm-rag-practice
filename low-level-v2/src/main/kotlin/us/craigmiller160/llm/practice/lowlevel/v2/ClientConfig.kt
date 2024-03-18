@@ -3,6 +3,8 @@ package us.craigmiller160.llm.practice.lowlevel.v2
 import io.milvus.client.MilvusClient
 import io.milvus.client.MilvusServiceClient
 import io.milvus.param.ConnectParam
+import io.weaviate.client.Config
+import io.weaviate.client.WeaviateClient
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -17,7 +19,14 @@ class ClientConfig {
     return MilvusServiceClient(connectParam)
   }
 
-  @Bean fun chromaClient(): Client = Client("localhost:8000")
+  //  @Bean
+  fun chromaClient(): Client = Client("localhost:8000")
+
+  @Bean
+  fun weaviateClient(): WeaviateClient {
+    val config = Config("http", "localhost:8081")
+    return WeaviateClient(config)
+  }
 
   @Bean
   fun openaiClient(@Value("\${openai.key}") apiKey: String): OpenaiClient =
