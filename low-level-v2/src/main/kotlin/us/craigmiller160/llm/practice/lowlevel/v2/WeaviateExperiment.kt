@@ -1,6 +1,9 @@
 package us.craigmiller160.llm.practice.lowlevel.v2
 
 import io.weaviate.client.WeaviateClient
+import io.weaviate.client.v1.schema.model.DataType
+import io.weaviate.client.v1.schema.model.Property
+import io.weaviate.client.v1.schema.model.WeaviateClass
 import org.slf4j.LoggerFactory
 import org.springframework.boot.context.event.ApplicationReadyEvent
 import org.springframework.context.event.EventListener
@@ -13,5 +16,11 @@ class WeaviateExperiment(
     private val openaiClient: OpenaiClient
 ) {
   private val log = LoggerFactory.getLogger(javaClass)
-  @EventListener(ApplicationReadyEvent::class) fun onReady() {}
+  @EventListener(ApplicationReadyEvent::class)
+  fun onReady() {
+    WeaviateClass.builder()
+        .className("Test")
+        .properties(listOf(Property.builder().name("text").dataType(listOf(DataType.TEXT)).build()))
+        .build()
+  }
 }
