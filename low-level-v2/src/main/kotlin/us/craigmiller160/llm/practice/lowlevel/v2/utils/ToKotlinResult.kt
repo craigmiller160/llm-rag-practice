@@ -2,10 +2,9 @@ package us.craigmiller160.llm.practice.lowlevel.v2.utils
 
 import io.weaviate.client.base.Result
 
-fun Result<T>.toKotlinResult(): kotlin.Result<T> {
+fun <T> Result<T>.toKotlinResult(): kotlin.Result<T> {
   if (hasErrors()) {
-    return getError()
-        .messages
+    return error.messages
         .map { it.throwable }
         .reduce { acc, throwable ->
           acc.addSuppressed(throwable)
@@ -13,5 +12,5 @@ fun Result<T>.toKotlinResult(): kotlin.Result<T> {
         }
         .let { kotlin.Result.failure(it) }
   }
-  return kotlin.Result.success(getResult())
+  return kotlin.Result.success(result)
 }
