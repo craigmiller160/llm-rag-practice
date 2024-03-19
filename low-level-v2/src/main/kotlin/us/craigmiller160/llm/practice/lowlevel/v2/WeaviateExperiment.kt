@@ -15,12 +15,18 @@ class WeaviateExperiment(
     private val weaviateClient: WeaviateClient,
     private val openaiClient: OpenaiClient
 ) {
+  companion object {
+    const val CLASS_NAME = "Test"
+  }
   private val log = LoggerFactory.getLogger(javaClass)
   @EventListener(ApplicationReadyEvent::class)
   fun onReady() {
-    WeaviateClass.builder()
-        .className("Test")
-        .properties(listOf(Property.builder().name("text").dataType(listOf(DataType.TEXT)).build()))
-        .build()
+    val result =
+        WeaviateClass.builder()
+            .className("Test")
+            .properties(
+                listOf(Property.builder().name("text").dataType(listOf(DataType.TEXT)).build()))
+            .build()
+            .let { weaviateClient.schema().classCreator().withClass(it).run() }
   }
 }
