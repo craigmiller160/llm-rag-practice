@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory
 import org.springframework.boot.context.event.ApplicationReadyEvent
 import org.springframework.context.event.EventListener
 import org.springframework.stereotype.Component
+import us.craigmiller160.llm.practice.lowlevel.v2.utils.toKotlinResult
 import us.craigmiller160.llm.ragpractice.common.spring.openai.OpenaiClient
 
 @Component
@@ -21,12 +22,12 @@ class WeaviateExperiment(
   private val log = LoggerFactory.getLogger(javaClass)
   @EventListener(ApplicationReadyEvent::class)
   fun onReady() {
-    val result =
-        WeaviateClass.builder()
-            .className("Test")
-            .properties(
-                listOf(Property.builder().name("text").dataType(listOf(DataType.TEXT)).build()))
-            .build()
-            .let { weaviateClient.schema().classCreator().withClass(it).run() }
+    WeaviateClass.builder()
+        .className("Test")
+        .properties(listOf(Property.builder().name("text").dataType(listOf(DataType.TEXT)).build()))
+        .build()
+        .let { weaviateClient.schema().classCreator().withClass(it).run() }
+        .toKotlinResult()
+        .getOrThrow()
   }
 }
