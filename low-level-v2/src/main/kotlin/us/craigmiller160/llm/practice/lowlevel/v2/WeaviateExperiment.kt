@@ -89,15 +89,19 @@ class WeaviateExperiment(
     log.info("Search query embedding created")
 
     log.info("Performing search")
-    weaviateClient
-        .graphQL()
-        .get()
-        .withClassName(CLASS_NAME)
-        .withFields(Field.builder().name(TEXT_FIELD).build())
-        .withNearVector(NearVectorArgument.builder().vector(searchEmbedding.toTypedArray()).build())
-        .run()
-        .toKotlinResult()
-        .getOrThrow()
+    val results =
+        weaviateClient
+            .graphQL()
+            .get()
+            .withClassName(CLASS_NAME)
+            .withFields(Field.builder().name(TEXT_FIELD).build())
+            .withNearVector(
+                NearVectorArgument.builder().vector(searchEmbedding.toTypedArray()).build())
+            .run()
+            .toKotlinResult()
+            .getOrThrow()
     log.info("Search completed")
+
+    log.info("Results: {}", results.data)
   }
 }
