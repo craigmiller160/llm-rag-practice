@@ -4,13 +4,8 @@ import io.weaviate.client.base.Result
 
 fun <T> Result<T>.toKotlinResult(): kotlin.Result<T> {
   if (hasErrors()) {
-    return error.messages
-        .map { it.throwable }
-        .reduce { acc, throwable ->
-          acc.addSuppressed(throwable)
-          return@reduce acc
-        }
-        .let { kotlin.Result.failure(it) }
+    val combinedMessages = error.messages.joinToString(",") { it.message }
+    return kotlin.Result.failure(RuntimeException("Weaviate error: $combinedMessages"))
   }
   return kotlin.Result.success(result)
 }
