@@ -23,7 +23,7 @@ class WeaviateExperiment(
   @EventListener(ApplicationReadyEvent::class)
   fun onReady() {
     WeaviateClass.builder()
-        .className("Test")
+        .className(CLASS_NAME)
         .properties(listOf(Property.builder().name("text").dataType(listOf(DataType.TEXT)).build()))
         .build()
         .let { weaviateClient.schema().classCreator().withClass(it).run() }
