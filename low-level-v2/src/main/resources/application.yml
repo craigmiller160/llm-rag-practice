@@ -1,3 +1,4 @@
 logging:
   level:
     us.craigmiller160: DEBUG
+    io.weaviate: DEBUG

@@ -12,6 +12,7 @@ import us.craigmiller160.llm.practice.lowlevel.v2.utils.toKotlinResult
 class WeaviateConnection(@Value("\${weaviate.key}") private val weaviateKey: String) {
   @EventListener(ApplicationReadyEvent::class)
   fun onReady() {
+    println("Attempting to connect")
     val config = Config("https", "craigpc:30000")
     val client = WeaviateAuthClient.apiKey(config, weaviateKey)
 
