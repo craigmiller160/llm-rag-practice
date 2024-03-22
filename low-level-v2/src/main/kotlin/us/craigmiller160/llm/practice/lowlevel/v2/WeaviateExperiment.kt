@@ -10,7 +10,6 @@ import java.util.UUID
 import org.slf4j.LoggerFactory
 import org.springframework.boot.context.event.ApplicationReadyEvent
 import org.springframework.context.event.EventListener
-import org.springframework.stereotype.Component
 import us.craigmiller160.llm.practice.lowlevel.v2.utils.toKotlinResult
 import us.craigmiller160.llm.ragpractice.common.spring.openai.OpenaiClient
 import us.craigmiller160.llm.ragpractice.common.spring.openai.dto.dto.ChatCompletionRequest
@@ -19,7 +18,7 @@ import us.craigmiller160.llm.ragpractice.common.spring.openai.dto.dto.common.Cha
 import us.craigmiller160.llm.ragpractice.common.spring.openai.dto.dto.common.EmbeddingModel
 import us.craigmiller160.llm.ragpractice.common.spring.openai.dto.dto.common.UserMessage
 
-@Component
+// @Component
 class WeaviateExperiment(
     private val weaviateClient: WeaviateClient,
     private val openaiClient: OpenaiClient
