@@ -7,8 +7,8 @@ import us.craigmiller160.llm.ragpractice.common.spring.properties.YamlPropertyLo
 
 @SpringBootApplication
 @PropertySource("file:./secrets.yml", factory = YamlPropertyLoaderFactory::class)
-class Runner
+class LowLevelV2Runner
 
 fun main(args: Array<String>) {
-  SpringApplication.run(Runner::class.java, *args)
+  SpringApplication.run(LowLevelV2Runner::class.java, *args)
 }
